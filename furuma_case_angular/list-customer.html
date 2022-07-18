@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách khách hàng</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="libs/fontawesome/css/all.css">
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="libs/css/style.css">
+</head>
+<body class="list-body">
+<!--nav-bar-->
+<nav class="navbar navbar-expand-sm bg-transparent fixed-top align-items-center text-info" id="navbar">
+    <div class="container">
+        <a class="navbar-brand font-weight-bold" style="color: inherit" href="index.html">Furuma Resort</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+                aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: inherit" href="index.html">Home <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown align-items-center">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                       aria-haspopup="true" style="color: inherit"
+                       aria-expanded="false">Dịch vụ</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="list-service.html">Danh sách dịch vụ</a>
+                        <a class="dropdown-item" href="#">Khác</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown align-items-center">
+                    <a class="nav-link dropdown-toggle" style="color: inherit" href="#" id="dropdownCustomerId"
+                       data-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false">Khách hàng</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownCustomerId">
+                        <a class="dropdown-item" href="list-customer.html">Danh sách khách hàng</a>
+                        <a class="dropdown-item" href="#">Khác</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown align-items-center">
+                    <a class="nav-link dropdown-toggle" style="color: inherit" href="#" id="dropdownContractId"
+                       data-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false">Hợp đồng</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownContractId">
+                        <a class="dropdown-item" href="list-contract.html">Danh sách hợp đồng</a>
+                        <a class="dropdown-item" href="#">Khác</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: inherit" href="#">Giải trí</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: inherit" href="#">Điểm đến</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: inherit" href="#">Ưu đãi</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: inherit" href="#">Liên hệ</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="tab1Id" role="tabpanel"></div>
+    <div class="tab-pane fade" id="tab2Id" role="tabpanel"></div>
+    <div class="tab-pane fade" id="tab3Id" role="tabpanel"></div>
+    <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
+    <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
+</div>
+<!--body page-->
+<div class="bg-customer align-content-center justify-content-center w-100 mb-5" style="height: 500px">
+    <h2 class="text-center text-info font-weight-bold"
+        style="line-height:500px; font-family: 'Times New Roman'; font-size: 40px">KHÁCH HÀNG</h2>
+</div>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-hover table-inverse" border="1px" id="display-customer">
+            <thead class="thead-inverse">
+            <tr>
+                <th>Mã khách hàng</th>
+                <th>Họ tên</th>
+                <th>Ngày sinh</th>
+                <th>Giới tính</th>
+                <th>số CMND</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Địa chỉ</th>
+                <th>Loại khách</th>
+                <th>Thao tác</th>
+            </tr>
+            </thead>
+            <tbody id="body">
+            <tr>
+                <td>KH-0001</td>
+                <td>Trần Văn An</td>
+                <td>1989-02-12</td>
+                <td>Nam</td>
+                <td>2156345495</td>
+                <td>093156456</td>
+                <td>vanan21@gmail.com</td>
+                <td>342/21/1 Hoàng Diệu, Đà Nẵng</td>
+                <td>Platium</td>
+                <td>
+                    <button data-content="" type="button" class="btn btn-warning btn-sm btn-edt"
+                            data-toggle="modal" data-target="#modalEdtId">
+                        <i class="fa fa-pen"></i> Edit
+                    </button>
+                    <button data-content="" type="button" class="btn btn-danger btn-sm btn-del"
+                            data-toggle="modal" data-target="#modalDelId">
+                        <i class="fa fa-trash-can"></i> Delete
+                    </button>
+                    <button data-content="" type="button" class="btn btn-info btn-sm btn-detail"
+                            data-toggle="modal" data-target="#modalDetailId">
+                        <i class="fa fa-info"></i> Detail
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>KH-0002</td>
+                <td>Lê Văn Tú</td>
+                <td>1990-05-15</td>
+                <td>Nữ</td>
+                <td>2156345495</td>
+                <td>093156456</td>
+                <td>vantu15@gmail.com</td>
+                <td>342/21/1 Duy Tân, Đà Nẵng</td>
+                <td>Gold</td>
+                <td>
+                    <button data-content="" type="button" class="btn btn-warning btn-sm btn-edt"
+                            data-toggle="modal" data-target="#modalEdtId">
+                        <i class="fa fa-pen"></i> Edit
+                    </button>
+                    <button data-content="" type="button" class="btn btn-danger btn-sm btn-del"
+                            data-toggle="modal" data-target="#modalDelId">
+                        <i class="fa fa-trash-can"></i> Delete
+                    </button>
+                    <button data-content="" type="button" class="btn btn-info btn-sm btn-detail"
+                            data-toggle="modal" data-target="#modalDetailId">
+                        <i class="fa fa-info"></i> Detail
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>KH-0003</td>
+                <td>Trần Hoài Nam</td>
+                <td>1985-12-20</td>
+                <td>Nam</td>
+                <td>2156345495</td>
+                <td>093156456</td>
+                <td>hoainam20@gmail.com</td>
+                <td>340 Lê Độ, Đà Nẵng</td>
+                <td>Platium</td>
+                <td>
+                    <button data-content="" type="button" class="btn btn-warning btn-sm btn-edt"
+                            data-toggle="modal" data-target="#modalEdtId">
+                        <i class="fa fa-pen"></i> Edit
+                    </button>
+                    <button data-content="" type="button" class="btn btn-danger btn-sm btn-del"
+                            data-toggle="modal" data-target="#modalDelId">
+                        <i class="fa fa-trash-can"></i> Delete
+                    </button>
+                    <button data-content="" type="button" class="btn btn-info btn-sm btn-detail"
+                            data-toggle="modal" data-target="#modalDetailId">
+                        <i class="fa fa-info"></i> Detail
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>KH-0004</td>
+                <td>Trần Quốc Tuấn</td>
+                <td>1990-01-22</td>
+                <td>Nam</td>
+                <td>2156345495</td>
+                <td>093156456</td>
+                <td>quoctuan22@gmail.com</td>
+                <td>345 Nguyễn Thái Học, Đà Nẵng</td>
+                <td>Member</td>
+                <td>
+                    <button data-content="" type="button" class="btn btn-warning btn-sm btn-edt"
+                            data-toggle="modal" data-target="#modalEdtId">
+                        <i class="fa fa-pen"></i> Edit
+                    </button>
+                    <button data-content="" type="button" class="btn btn-danger btn-sm btn-del"
+                            data-toggle="modal" data-target="#modalDelId">
+                        <i class="fa fa-trash-can"></i> Delete
+                    </button>
+                    <button data-content="" type="button" class="btn btn-info btn-sm btn-detail"
+                            data-toggle="modal" data-target="#modalDetailId">
+                        <i class="fa fa-info"></i> Detail
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>KH-0005</td>
+                <td>Nguyễn Quốc Trung</td>
+                <td>1995-03-10</td>
+                <td>Nam</td>
+                <td>2156345495</td>
+                <td>093156456</td>
+                <td>quoctrung10@gmail.com</td>
+                <td>322 Điện Biên Phủ, Đà Nẵng</td>
+                <td>Silver</td>
+                <td>
+                    <button data-content="" type="button" class="btn btn-warning btn-sm btn-edt"
+                            data-toggle="modal" data-target="#modalEdtId">
+                        <i class="fa fa-pen"></i> Edit
+                    </button>
+                    <button data-content="" type="button" class="btn btn-danger btn-sm btn-del"
+                            data-toggle="modal" data-target="#modalDelId">
+                        <i class="fa fa-trash-can"></i> Delete
+                    </button>
+                    <button data-content="" type="button" class="btn btn-info btn-sm btn-detail"
+                            data-toggle="modal" data-target="#modalDetailId">
+                        <i class="fa fa-info"></i> Detail
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination align-content-center align-items-center mt-2 mb-2">
+        <a href="#">&laquo;</a>
+        <a href="#">1</a>
+        <a href="#" class="active">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+    </div>
+</div>
+<button onclick="scrollTopAnimated()" id="back-top" title="Go to top"><i class="fa fa-arrow-up"></i></button>
+<button data-toggle="modal" data-target="#modalAddId" id="add-new" title="Add new customer"><i class="fa fa-plus"
+                                                                                              data-toggle="modal"
+                                                                                              data-target="#modalAddId"></i>
+</button>
+
+<!--Modal-->
+<!--Add new-->
+<div class="modal fade" id="modalAddId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="body-addnew">
+                <div class="container">
+                    <div class="form-group row">
+                        <label for="maKhachHang-add">Mã khách hàng: </label>
+                        <input type="number" id="maKhachHang-add" class="form-control" readonly>
+                    </div>
+                    <div class="form-group row">
+                        <label for="hoTen-add">Họ và tên: </label>
+                        <input type="text" id="hoTen-add" class="form-control" placeholder="Họ và tên" aria-describedby="helpNameId">
+                        <small id="helpNameId" class="text-muted">Không có ký tự đặc biệt hoặc số</small>
+                        <p class="w-100" id="errorName"></p>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ngaySinh-add">Ngày sinh: </label>
+                        <input type="date" id="ngaySinh-add" class="form-control" required>
+                    </div>
+                    <div class="form-group row">
+                        <label for="gioiTinh-add">Giới tính: </label>
+                        <select class="form-control" id="gioiTinh-add">
+                            <option value="0">Nam</option>
+                            <option value="1">Nữ</option>
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="soCmnd-add">Số CMND/CCCD: </label>
+                            <input id="soCmnd-add" class="form-control" type="text" aria-describedby="helpSoCmndId">
+                            <small id="helpSoCmndId" class="text-muted">Không có ký tự đặc biệt</small>
+                            <p class="w-100" id="errorCmnd"></p>
+                        </div>
+                        <div class="col-6">
+                            <label for="soDienThoai-add">Số điện thoại: </label>
+                            <input id="soDienThoai-add" class="form-control" type="text" aria-describedby="helpSdtId">
+                            <small id="helpSdtId" class="text-muted">Định dạng +84|0{3|9}-xx.xx.xx.xx</small>
+                            <p class="w-100" id="errorPhone"></p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="email-add">Email: </label>
+                            <input id="email-add" class="form-control" type="text" aria-describedby="helpEmailId">
+                            <small id="helpEmailId" class="text-muted">Định dạng VD: abc123@domain.com</small>
+                            <p class="w-100" id="errorEmail"></p>
+                        </div>
+                        <div class="col-6">
+                            <label for="diaChi-add">Địa chỉ: </label>
+                            <input id="diaChi-add" class="form-control" type="text" aria-describedby="helpDiaChiId">
+                            <small id="helpDiaChiId" class="text-muted">Định dạng VD: 123 hoặc 123/12 Trần Độc</small>
+                            <p class="w-100" id="errorAddr"></p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="type-add">Danh mục: </label>
+                        <select name="type" class="form-control" id="type-add">
+                            <option>-----Lựa chọn-----</option>
+                            <option>Diamond</option>
+                            <option>Platium</option>
+                            <option>Gold</option>
+                            <option>Silver</option>
+                            <option>Member</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="customer-add-new"><i class="fa fa-save"></i> Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Edit-->
+<div class="modal fade" id="modalEdtId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="body-edit">
+                <div class="container">
+                    <div class="form-group row">
+                        <label for="maKhachHang-edit">Mã khách hàng: </label>
+                        <input type="number" id="maKhachHang-edit" class="form-control" readonly>
+                    </div>
+                    <div class="form-group row">
+                        <label for="hoTen-edit">Họ và tên: </label>
+                        <input type="text" id="hoTen-edit" class="form-control" placeholder="Họ và tên" aria-describedby="helpNameId-edit">
+                        <small id="helpNameId-edit" class="text-muted">Không có ký tự đặc biệt hoặc số</small>
+                        <p class="w-100" id="errorName-edit"></p>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ngaySinh-edit">Ngày sinh: </label>
+                        <input type="date" id="ngaySinh-edit" class="form-control" required>
+                    </div>
+                    <div class="form-group row">
+                        <label for="gioiTinh-edit">Giới tính: </label>
+                        <select class="form-control" id="gioiTinh-edit">
+                            <option value="0">Nam</option>
+                            <option value="1">Nữ</option>
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="soCmnd-edit">Số CMND/CCCD: </label>
+                            <input id="soCmnd-edit" class="form-control" type="text" aria-describedby="helpSoCmndId-edit">
+                            <small id="helpSoCmndId-edit" class="text-muted">Không có ký tự đặc biệt</small>
+                            <p class="w-100" id="errorCmnd-edit"></p>
+                        </div>
+                        <div class="col-6">
+                            <label for="soDienThoai-edit">Số điện thoại: </label>
+                            <input id="soDienThoai-edit" class="form-control" type="text" aria-describedby="helpSdtId-edit">
+                            <small id="helpSdtId-edit" class="text-muted">Định dạng +84|0{3|9}-xx.xx.xx.xx</small>
+                            <p class="w-100" id="errorPhone-edit"></p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="email-edit">Email: </label>
+                            <input id="email-edit" class="form-control" type="text" aria-describedby="helpEmailId-edit">
+                            <small id="helpEmailId-edit" class="text-muted">Định dạng VD: abc123@domain.com</small>
+                            <p class="w-100" id="errorEmail-edit"></p>
+                        </div>
+                        <div class="col-6">
+                            <label for="diaChi-edit">Địa chỉ: </label>
+                            <input id="diaChi-edit" class="form-control" type="text" aria-describedby="helpDiaChiId-edit">
+                            <small id="helpDiaChiId-edit" class="text-muted">Định dạng VD: 123 hoặc 123/12 Trần Độc</small>
+                            <p class="w-100" id="errorAddr-edit"></p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="type-edit">Danh mục: </label>
+                        <select name="type" class="form-control" id="type-edit">
+                            <option>-----Lựa chọn-----</option>
+                            <option>Diamond</option>
+                            <option>Platium</option>
+                            <option>Gold</option>
+                            <option>Silver</option>
+                            <option>Member</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="customer-edit"><i class="fa fa-save"></i> Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--modal delete-->
+<div class="modal fade" id="modalDelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="body-delete">
+                <p class="text-danger">Bạn có muốn xoá thông tin khách hàng này? </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--modal detail-->
+<div class="modal fade" id="modalDetailId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detail Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="body-detail">
+                <p>Thông tin khách hàng chi tiết</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footter-->
+<footer
+        class="text-center text-lg-start text-white"
+        style="background-color: #007BFF">
+    <section
+            class="d-flex justify-content-between p-4"
+            style="background-color: #6351ce">
+        <div class="me-5">
+            <span>Get connected with us on social networks:</span>
+        </div>
+        <div>
+            <a href="#" class="text-white me-4">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-white me-4">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-white me-4">
+                <i class="fab fa-google"></i>
+            </a>
+            <a href="#" class="text-white me-4">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-white me-4">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#" class="text-white me-4">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </section>
+    <section>
+        <div class="container text-center text-md-start mt-5">
+            <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold">Furuma Resort</h6>
+                    <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px"
+                    />
+                    <p>
+                        Furama is a premier base for exploring one of Asia’s most exciting new destinations. Just a
+                        short drive from Danang lay four UNESCO-listed World Heritage Sites
+                    </p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Utilities</h6>
+                    <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px"
+                    />
+                    <p>
+                        <a href="#" class="text-white">News</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Rank Rate</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Lifestyle Blog</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Work with us</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Contract us</a>
+                    </p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Useful links</h6>
+                    <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px"
+                    />
+                    <p>
+                        <a href="#" class="text-white">Your Account</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Become an Affiliate</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Shipping Rates</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Help</a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="text-uppercase fw-bold">Contact</h6>
+                    <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px"
+                    />
+                    <p><i class="fas fa-home mr-3"></i>103 - 105 Vo Nguyen Giap Street, Khue My Ward, Ngu Hanh Son
+                        District, Danang City, Vietnam </p>
+                    <p><i class="fas fa-envelope mr-3"></i>reservation@furamavn.com</p>
+                    <p><i class="fas fa-phone mr-3"></i>84-236-3847 333/888 </p>
+                    <p><i class="fas fa-print mr-3"></i>84-236-3847 666 </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2022 Copyright: Luan Nguyen Designer
+    </div>
+</footer>
+
+</body>
+<!-- jQuery -->
+<script type="text/javascript" src="libs/ajax/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="libs/popper/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="libs/bootstrap/bootstrap.min.js"></script>
+<!-- Your custom scripts (optional) -->
+<script type="text/javascript" src="libs/ajax/customer.js"></script>
+</html>

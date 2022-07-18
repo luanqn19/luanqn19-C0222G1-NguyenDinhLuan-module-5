@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách hợp đồng</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="libs/fontawesome/css/all.css">
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="libs/css/style.css">
+</head>
+<body class="list-body">
+<!--nav-bar-->
+<nav class="navbar navbar-expand-sm bg-transparent fixed-top align-items-center text-info" id="navbar">
+    <div class="container">
+        <a class="navbar-brand font-weight-bold" style="color: inherit" href="index.html">Furuma Resort</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+                aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: inherit" href="index.html">Home <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown align-items-center">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                       aria-haspopup="true" style="color: inherit"
+                       aria-expanded="false">Dịch vụ</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="list-service.html">Danh sách dịch vụ</a>
+                        <a class="dropdown-item" href="#">Khác</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown align-items-center">
+                    <a class="nav-link dropdown-toggle" style="color: inherit" href="#" id="dropdownCustomerId"
+                       data-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false">Khách hàng</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownCustomerId">
+                        <a class="dropdown-item" href="list-customer.html">Danh sách khách hàng</a>
+                        <a class="dropdown-item" href="#">Khác</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown align-items-center">
+                    <a class="nav-link dropdown-toggle" style="color: inherit" href="#" id="dropdownContractId"
+                       data-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false">Hợp đồng</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownContractId">
+                        <a class="dropdown-item" href="list-contract.html">Danh sách hợp đồng</a>
+                        <a class="dropdown-item" href="#">Khác</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: inherit" href="#">Giải trí</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: inherit" href="#">Điểm đến</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: inherit" href="#">Ưu đãi</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: inherit" href="#">Liên hệ</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="tab1Id" role="tabpanel"></div>
+    <div class="tab-pane fade" id="tab2Id" role="tabpanel"></div>
+    <div class="tab-pane fade" id="tab3Id" role="tabpanel"></div>
+    <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
+    <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
+</div>
+<!--body page-->
+<div class="bg-contract align-content-center justify-content-center w-100 mb-5" style="height: 500px">
+    <!--    <h2 class="text-center text-info font-weight-bold"-->
+    <!--        style="line-height:500px; font-family: 'Times New Roman'; font-size: 40px">Hợp đồng</h2>-->
+</div>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-hover table-inverse" id="display-contract">
+            <thead class="thead-inverse">
+            <tr>
+                <th>Mã hợp đồng</th>
+                <th>Khách hàng</th>
+                <th>Dịch vụ</th>
+                <th>Ngày bắt đầu</th>
+                <th>Ngày kết thúc</th>
+                <th>Tiền đặt cọc</th>
+                <th>Tổng tiền</th>
+                <th>Thao tác</th>
+            </tr>
+            </thead>
+            <tbody id="body-contract">
+            <tr>
+                <td>HD-0001</td>
+                <td>Nguyễn Quốc Trung</td>
+                <td>Villa</td>
+                <td>2022-07-16</td>
+                <td>2022-07-20</td>
+                <td>3.000.000</td>
+                <td>2.000.000</td>
+                <td>
+                    <button data-content="" type="button" class="btn btn-info btn-sm btn-add"
+                            data-toggle="modal" data-target="#modalAddId"><i class="fa fa-plus"></i></button>
+                    <button type="button" class="btn btn-info btn-sm btn-list"
+                            data-toggle="modal" data-target="#modalListId">Danh sách các dịch vụ đi kèm
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>HD-0002</td>
+                <td>Trần Quốc Tuấn</td>
+                <td>House</td>
+                <td>2022-07-16</td>
+                <td>2022-07-30</td>
+                <td>1.000.000</td>
+                <td>5.000.000</td>
+                <td>
+                    <button data-content="" type="button" class="btn btn-info btn-sm btn-add"
+                            data-toggle="modal" data-target="#modalAddId"><i class="fa fa-plus"></i></button>
+                    <button type="button" class="btn btn-info btn-sm btn-list"
+                            data-toggle="modal" data-target="#modalListId">Danh sách các dịch vụ đi kèm
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>HD-0003</td>
+                <td>Trần Hoài Nam</td>
+                <td>Room</td>
+                <td>2022-07-16</td>
+                <td>2022-07-30</td>
+                <td>1.000.000</td>
+                <td>4.000.000</td>
+                <td>
+                    <button data-content="" type="button" class="btn btn-info btn-sm btn-add"
+                            data-toggle="modal" data-target="#modalAddId"><i class="fa fa-plus"></i></button>
+                    <button type="button" class="btn btn-info btn-sm btn-list"
+                            data-toggle="modal" data-target="#modalListId">Danh sách các dịch vụ đi kèm
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>HD-0004</td>
+                <td>Lê Văn Tú</td>
+                <td>Villa</td>
+                <td>2022-07-16</td>
+                <td>2022-07-25</td>
+                <td>2.000.000</td>
+                <td>5.000.000</td>
+                <td>
+                    <button data-content="" type="button" class="btn btn-info btn-sm btn-add"
+                            data-toggle="modal" data-target="#modalAddId"><i class="fa fa-plus"></i></button>
+                    <button type="button" class="btn btn-info btn-sm btn-list"
+                            data-toggle="modal" data-target="#modalListId">Danh sách các dịch vụ đi kèm
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination align-content-center align-items-center mt-2 mb-2">
+        <a href="#">&laquo;</a>
+        <a href="#">1</a>
+        <a href="#" class="active">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+    </div>
+</div>
+
+<button onclick="scrollTopAnimated()" id="back-top" title="Go to top"><i class="fa fa-arrow-up"></i></button>
+<button data-toggle="modal" data-target="#modalAddContractId" id="add-new" title="Add new contract"><i class="fa fa-plus"
+                                                                                               data-toggle="modal"
+                                                                                               data-target="#modalAddContractId"></i>
+</button>
+
+<!--modal add contract-->
+<div class="modal fade" id="modalAddContractId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Contract</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="body-addnew-contract">
+                <div class="container">
+                    <div class="form-group row">
+                        <label for="maHopDong-add">Mã hợp đồng: </label>
+                        <input type="number" id="maHopDong-add" class="form-control" readonly>
+                    </div>
+                    <div class="form-group row">
+                        <label for="dichVu-add">Dịch vụ: </label>
+                        <select name="dichVu" class="form-control" id="dichVu-add">
+                            <option value="">-------Select-------</option>
+                            <option>Villa</option>
+                            <option>House</option>
+                            <option>Room</option>
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <label for="khachHang-add">Khách hàng thuê: </label>
+                        <select name="khachHang" class="form-control" id="khachHang-add">
+                            <option value="">-------Select-------</option>
+                            <option>Trần Văn An</option>
+                            <option>Lê Văn Tú</option>
+                            <option>Trần Hoài Nam</option>
+                            <option>Trần Quốc Tuấn</option>
+                            <option>Nguyễn Quốc Trung</option>
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nhanVien-add">Nhân viên: </label>
+                        <select name="nhanVien" class="form-control" id="nhanVien-add">
+                            <option value="">-------Select-------</option>
+                            <option>Lê Văn Đào</option>
+                            <option>Võ Ngọc Thảo</option>
+                            <option>Trần Thế Bảo</option>
+                            <option>Lê Minh Trí</option>
+                            <option>Võ Anh Tuấn</option>
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="ngayBatDau-add">Ngày làm hợp đồng: </label>
+                            <input type="date" id="ngayBatDau-add" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="ngayKetThuc-add">Ngày kết thúc hợp đồng: </label>
+                            <input type="date" id="ngayKetThuc-add" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="tienDatCoc-add">Tiền đặt cọc: </label>
+                        <input type="number" id="tienDatCoc-add" class="form-control" placeholder="Tiền đặt cọc"
+                               aria-describedby="helpDepositId" value="0">
+                        <small id="helpDepositId" class="text-muted">Tiền đặt cọc phải lớn hơn 0</small>
+                        <p class="w-100" id="errorDepositId"></p>
+                    </div>
+                    <div class="form-group row">
+                        <label for="total-add">Tổng tiền: </label>
+                        <input type="number" id="total-add" class="form-control" value="0" readonly>
+                    </div>
+                    <div class="form-group row">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1" onchange="displayField(this)">
+                            <label class="custom-control-label" for="customSwitch1">Dịch vụ đính kèm</label>
+                        </div>
+                    </div>
+                    <div class="form-group row display-invisible" id="soLuongInput">
+                        <label for="soLuongContractDetail-add">Số lượng: </label>
+                        <input type="number" id="soLuongContractDetail-add" class="form-control field" placeholder="Số lượng"
+                               aria-describedby="helpAmountDetailId" value="0">
+                        <small id="helpAmountDetailId" class="text-muted">Số lượng phải lớn hơn không</small>
+                        <p class="w-100 invalid-feedback" id="errorAmountId"></p>
+                    </div>
+                    <div class="form-group row display-invisible" id="loaiDichVuInput">
+                        <label for="loaiDichVuThemDetail-add">Dịch vụ thêm: </label>
+                        <select name="loaiDichVu" class="form-control" id="loaiDichVuThemDetail-add">
+                            <option value="">-------Select-------</option>
+                            <option>Xe Máy</option>
+                            <option>Xe Đạp</option>
+                            <option>Karaoke</option>
+                            <option>Buffet</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i>
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="editOrAddNewContract"><i
+                        class="fa fa-save"></i> Add
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--modal add-->
+<div class="modal fade" id="modalAddId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Contract Detail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="body-addnew-contract-detail">
+                <div class="container">
+                    <div class="form-group row">
+                        <label for="maHopDong-contract">Mã hợp đồng: </label>
+                        <input type="number" id="maHopDong-contract" class="form-control" readonly>
+                    </div>
+                    <div class="form-group row">
+                        <label for="soLuong-add">Số lượng: </label>
+                        <input type="number" id="soLuong-add" class="form-control" placeholder="Số lượng"
+                               aria-describedby="helpAmountId" value="0">
+                        <small id="helpAmountId" class="text-muted">Số lượng phải lớn hơn không</small>
+                        <p class="w-100 invalid-feedback" id="errorAmount"></p>
+                    </div>
+                    <div class="form-group row">
+                        <label for="loaiDichVuThem-add">Dịch vụ thêm: </label>
+                        <select name="loaiDichVu" class="form-control field" id="loaiDichVuThem-add">
+                            <option value="">-------Select-------</option>
+                            <option>Xe Máy</option>
+                            <option>Xe Đạp</option>
+                            <option>Karaoke</option>
+                            <option>Buffet</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i>
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveContractDetail"><i
+                        class="fa fa-save"></i> Add
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--footter-->
+<footer
+        class="text-center text-lg-start text-white"
+        style="background-color: #007BFF">
+    <section
+            class="d-flex justify-content-between p-4"
+            style="background-color: #6351ce">
+        <div class="me-5">
+            <span>Get connected with us on social networks:</span>
+        </div>
+        <div>
+            <a href="#" class="text-white me-4">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-white me-4">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-white me-4">
+                <i class="fab fa-google"></i>
+            </a>
+            <a href="#" class="text-white me-4">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-white me-4">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#" class="text-white me-4">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </section>
+    <section>
+        <div class="container text-center text-md-start mt-5">
+            <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold">Furuma Resort</h6>
+                    <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px"
+                    />
+                    <p>
+                        Furama is a premier base for exploring one of Asia’s most exciting new destinations. Just a
+                        short drive from Danang lay four UNESCO-listed World Heritage Sites
+                    </p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Utilities</h6>
+                    <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px"
+                    />
+                    <p>
+                        <a href="#" class="text-white">News</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Rank Rate</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Lifestyle Blog</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Work with us</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Contract us</a>
+                    </p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Useful links</h6>
+                    <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px"
+                    />
+                    <p>
+                        <a href="#" class="text-white">Your Account</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Become an Affiliate</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Shipping Rates</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white">Help</a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="text-uppercase fw-bold">Contact</h6>
+                    <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px"
+                    />
+                    <p><i class="fas fa-home mr-3"></i>103 - 105 Vo Nguyen Giap Street, Khue My Ward, Ngu Hanh Son
+                        District, Danang City, Vietnam </p>
+                    <p><i class="fas fa-envelope mr-3"></i>reservation@furamavn.com</p>
+                    <p><i class="fas fa-phone mr-3"></i>84-236-3847 333/888 </p>
+                    <p><i class="fas fa-print mr-3"></i>84-236-3847 666 </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2022 Copyright: Luan Nguyen Designer
+    </div>
+</footer>
+
+</body>
+<!-- jQuery -->
+<script type="text/javascript" src="libs/ajax/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="libs/popper/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="libs/bootstrap/bootstrap.min.js"></script>
+<!-- Your custom scripts (optional) -->
+<script type="text/javascript" src="libs/ajax/customer.js"></script>
+<script type="text/javascript" src="libs/ajax/contract.js"></script>
+</html>
