@@ -1,0 +1,8 @@
+.display-visible {
+    display: block;
+    visibility: visible;
+}
+.display-invisible {
+    visibility: hidden;
+    display: none;
+}

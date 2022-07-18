@@ -1,0 +1,152 @@
+.list-body {
+    background-image: url(https://furamavietnam.com/wp-content/uploads/2018/08/BG2.jpg);
+    background-position: right bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.bg-service {
+    background-image: url(https://furamavietnam.com/wp-content/uploads/2018/08/banner01.jpg?id=1433) !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+.card-body > h4 {
+    font-size: 16px;
+}
+
+.container-image {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.img-hover-zoom--slowmo {
+    transform-origin: 50% 65%;
+    transition: transform 10s, filter 3s ease-in-out;
+    filter: brightness(120%);
+}
+
+.img-hover-zoom--slowmo:hover {
+    filter: blur(1px);
+    transform: scale(2);
+}
+
+.container-image > .btn-edit {
+    position: absolute;
+    z-index: 99;
+    left: 23%;
+    top: 45%;
+    visibility: hidden;
+    transition: .5s ease;
+}
+
+.container-image > .btn-del {
+    position: absolute;
+    z-index: 99;
+    left: 53%;
+    top: 45%;
+    visibility: hidden;
+    transition: .5s ease;
+}
+
+.container-image:hover > button {
+    transition: .5s ease;
+    visibility: visible;
+}
+
+#back-top {
+    width: 68px;
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 25px;
+    border: none;
+    outline: none;
+    background-color: darkslategrey;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 100%;
+}
+
+#add-new {
+    width: 68px;
+    display: block;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    z-index: 99;
+    font-size: 25px;
+    border: none;
+    outline: none;
+    background-color: #50FA64;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 100%;
+}
+
+/*pagging*/
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+/*customer*/
+.bg-customer {
+    background-image: url(http://www.skylineservice.eu/images/o-WHITE-HAND-facebook.jpg) !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+.nav-text-color {
+    color: white;
+}
+
+th, td {
+    font-size: 13px;
+    text-align: center !important;
+    max-width:100%;
+    white-space:nowrap;
+}
+/*contract*/
+.bg-contract {
+    background-image: url(https://www.healthlawadvisor.com/files/2020/03/Contract-shutterstock_224895475-scaled.jpg) !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+.display-visible {
+    display: block;
+    visibility: visible;
+}
+
+.display-invisible {
+    visibility: hidden;
+    display: none;
+}
