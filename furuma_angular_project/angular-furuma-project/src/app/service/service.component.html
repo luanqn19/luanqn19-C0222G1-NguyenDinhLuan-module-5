@@ -1,1 +1,299 @@
-<p>service works!</p>
+<div class="list-body" style="box-sizing: border-box !important;">
+  <div class="bg-service align-content-center justify-content-center w-100 mb-5" style="height: 300px">
+    <h2 class="text-center text-white font-weight-bold"
+        style="line-height:300px; font-family: 'Times New Roman'; font-size: 40px">LOẠI
+      PHÒNG</h2>
+  </div>
+  <div class="container-fluid p-3">
+    <div class="row justify-content-center">
+      <div class="card-group" *ngFor="let facility of listService">
+        <div class="card bg-light m-1">
+          <div class="container-image">
+            <img class="card-img-top img-hover-zoom--slowmo" src="{{facility._urlService}}"
+                 alt="Card image cap">
+            <button class="btn btn-info w-25 btn-edit" data-toggle="modal"
+                    data-target="#modalEdtId"><i class="fa fa-edit" data-toggle="modal"
+                                                 data-target="#modalEdtId"></i></button>
+            <button class="btn btn-danger w-25 btn-del" data-toggle="modal" data-target="#modelId"><i
+              class="fa fa-trash-can"></i></button>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title m-0">{{facility._titleService}}</h4>
+            <p class="card-text">{{facility._descriptionService}}<sup>2</sup></p>
+            <button type="button" class="btn btn-secondary border-0 bg-transparent text-black-50"
+                    data-toggle="tooltip" data-placement="bottom" title="Xem thêm chi tiết">
+              <i class="fa fa-circle-info"></i> Xem thêm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pagination align-content-center align-items-center">
+      <a href="#">&laquo;</a>
+      <a href="#">1</a>
+      <a href="#" class="active">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <a href="#">5</a>
+      <a href="#">6</a>
+      <a href="#">&raquo;</a>
+    </div>
+  </div>
+
+  <button onclick="scrollTopAnimated()" id="back-top" title="Go to top"><i class="fa fa-arrow-up"></i></button>
+  <button data-toggle="modal" data-target="#modalAddId" id="add-new" title="Add new service"><i class="fa fa-plus"
+                                                                                                data-toggle="modal"
+                                                                                                data-target="#modalAddId"></i>
+  </button>
+
+  <!--modal delete-->
+  <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm Delete</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Bạn có muốn xoá dịch vụ này không?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--modal add new-->
+  <div class="modal fade" id="modalAddId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+       aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Service</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="body-addnew">
+          <div class="container">
+            <div class="form-group row">
+              <label for="loaiDichVu-add">Dịch vụ: </label>
+              <select name="loaiDichVu" class="form-control" id="loaiDichVu-add">
+                <option>-----Lựa chọn-----</option>
+                <option>Villa</option>
+                <option>Room</option>
+                <option>House</option>
+              </select>
+            </div>
+            <div class="form-group row">
+              <label for="maDichVu-add">Mã dịch vụ: </label>
+              <input type="number" id="maDichVu-add" class="form-control" readonly>
+            </div>
+            <div class="form-group row">
+              <label for="tenDichVu-add">Tên dịch vụ: </label>
+              <input type="text" id="tenDichVu-add" class="form-control" placeholder="Tên dịch vụ"
+                     aria-describedby="helpNameId">
+              <small id="helpNameId" class="text-muted">Không có ký tự đặc biệt hoặc số</small>
+              <p class="w-100" id="errorName"></p>
+            </div>
+            <div class="form-group row">
+              <div class="col-6">
+                <label for="dienTich-add">Diện tích: </label>
+                <input type="number" id="dienTich-add" class="form-control" placeholder="Diện tích"
+                       aria-describedby="helpAreaId">
+                <small id="helpAreaId" class="text-muted">Diện tích phải lớn hơn không</small>
+                <p class="w-100" id="errorArea"></p>
+              </div>
+              <div class="col-6">
+                <label for="chiPhi-add">Chi phí thuê: </label>
+                <input type="number" id="chiPhi-add" class="form-control" placeholder="Chi phí thuê"
+                       aria-describedby="helpCostId">
+                <small id="helpCostId" class="text-muted">Chi phí thuê phải lớn hơn không</small>
+                <p class="w-100" id="errorCost"></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-6">
+                <label for="soNguoi-add">Số người tối đa: </label>
+                <input type="number" id="soNguoi-add" class="form-control" placeholder="Số người tối đa"
+                       aria-describedby="helpAmountId">
+                <small id="helpAmountId" class="text-muted">Số người tối đa phải lớn hơn không</small>
+                <p class="w-100" id="errorAmount"></p>
+              </div>
+              <div class="col-6">
+                <label for="kieuThue-add">Tên kiểu thuê: </label>
+                <select name="kieuThue" class="form-control" id="kieuThue-add">
+                  <option>-----Lựa chọn-----</option>
+                  <option>Giờ</option>
+                  <option>Ngày</option>
+                  <option>Tháng</option>
+                  <option>Năm</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row" id="standard-input">
+              <label for="tieuChuan-add">Tiêu chuẩn phòng: </label>
+              <input type="text" id="tieuChuan-add" class="form-control" placeholder="Tiêu chuẩn phòng"
+                     aria-describedby="helpStandardId" value="NONE">
+              <small id="helpStandardId" class="text-muted">Không có ký tự đặc biệt</small>
+              <p class="w-100" id="errorStandard"></p>
+            </div>
+            <div class="form-group row" id="pool-input">
+              <label for="hoBoi-add">Diện tích hồ bơi: </label>
+              <input type="number" id="hoBoi-add" class="form-control" placeholder="Diện tích hồ bơi"
+                     aria-describedby="helpPoolAreaId" value="0">
+              <small id="helpPoolAreaId" class="text-muted">Diện tích hồ bơi phải lớn hơn 0</small>
+              <p class="w-100" id="errorAreaPoolId"></p>
+            </div>
+            <div class="form-group row" id="floor-input">
+              <label for="floor-add">Số tầng: </label>
+              <input type="text" id="floor-add" class="form-control" placeholder="Số tầng"
+                     aria-describedby="helpFloorId" value="0">
+              <small id="helpFloorId" class="text-muted">Số tầng phải lớn hơn 0</small>
+              <p class="w-100" id="errorFloor"></p>
+            </div>
+            <div class="form-group row">
+              <label for="dichVuDiKem-add">Dịch vụ miễn phí đi kèm: </label>
+              <input type="text" id="dichVuDiKem-add" class="form-control"
+                     placeholder="Dịch vụ miễn phí đi kèm" aria-describedby="helpAttachId">
+              <small id="helpAttachId" class="text-muted">Không có ký tự đặc biệt</small>
+              <p class="w-100" id="errorAttach"></p>
+            </div>
+            <div class="form-group row">
+              <label for="tienNghiKhac-add">Mô tả tiện nghi khác: </label>
+              <textarea type="text" id="tienNghiKhac-add" class="form-control"
+                        placeholder="Mô tả tiện nghi khác"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i>
+            Close
+          </button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="service-add-new"><i
+            class="fa fa-save"></i> Add
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--modal edit-->
+  <div class="modal fade" id="modalEdtId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+       aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Service</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="body-edit">
+          <div class="container">
+            <div class="form-group row">
+              <label for="loaiDichVu-edit">Dịch vụ: </label>
+              <select name="loaiDichVu" class="form-control" id="loaiDichVu-edit">
+                <option>-----Lựa chọn-----</option>
+                <option>Villa</option>
+                <option>Room</option>
+                <option>House</option>
+              </select>
+            </div>
+            <div class="form-group row">
+              <label for="maDichVu-edit">Mã dịch vụ: </label>
+              <input type="number" id="maDichVu-edit" class="form-control" readonly>
+            </div>
+            <div class="form-group row">
+              <label for="tenDichVu-edit">Tên dịch vụ: </label>
+              <input type="text" id="tenDichVu-edit" class="form-control" placeholder="Tên dịch vụ"
+                     aria-describedby="helpNameId-edit">
+              <small id="helpNameId-edit" class="text-muted">Không có ký tự đặc biệt hoặc số</small>
+              <p class="w-100" id="errorName-edit"></p>
+            </div>
+            <div class="form-group row">
+              <div class="col-6">
+                <label for="dienTich-edit">Diện tích: </label>
+                <input type="number" id="dienTich-edit" class="form-control" placeholder="Diện tích"
+                       aria-describedby="helpAreaId-edit">
+                <small id="helpAreaId-edit" class="text-muted">Diện tích phải lớn hơn không</small>
+                <p class="w-100" id="errorArea-edit"></p>
+              </div>
+              <div class="col-6">
+                <label for="chiPhi-edit">Chi phí thuê: </label>
+                <input type="number" id="chiPhi-edit" class="form-control" placeholder="Chi phí thuê"
+                       aria-describedby="helpCostId-edit">
+                <small id="helpCostId-edit" class="text-muted">Chi phí thuê phải lớn hơn không</small>
+                <p class="w-100" id="errorCost-edit"></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-6">
+                <label for="soNguoi-edit">Số người tối đa: </label>
+                <input type="number" id="soNguoi-edit" class="form-control"
+                       placeholder="Số người tối đa"
+                       aria-describedby="helpAmountId-edit">
+                <small id="helpAmountId-edit" class="text-muted">Số người tối đa phải lớn hơn
+                  không</small>
+                <p class="w-100" id="errorAmount-edit"></p>
+              </div>
+              <div class="col-6">
+                <label for="kieuThue-edit">Tên kiểu thuê: </label>
+                <select name="kieuThue" class="form-control" id="kieuThue-edit">
+                  <option>-----Lựa chọn-----</option>
+                  <option>Giờ</option>
+                  <option>Ngày</option>
+                  <option>Tháng</option>
+                  <option>Năm</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row" id="standard-input-edit">
+              <label for="tieuChuan-edit">Tiêu chuẩn phòng: </label>
+              <input type="text" id="tieuChuan-edit" class="form-control" placeholder="Tiêu chuẩn phòng"
+                     aria-describedby="helpStandardId-edit">
+              <small id="helpStandardId-edit" class="text-muted">Không có ký tự đặc biệt</small>
+              <p class="w-100" id="errorStandard-edit"></p>
+            </div>
+            <div class="form-group row" id="pool-input-edit">
+              <label for="hoBoi-edit">Diện tích hồ bơi: </label>
+              <input type="number" id="hoBoi-edit" class="form-control" placeholder="Diện tích hồ bơi"
+                     aria-describedby="helpPoolAreaId-edit">
+              <small id="helpPoolAreaId-edit" class="text-muted">Diện tích hồ bơi phải lớn hơn 0</small>
+              <p class="w-100" id="errorAreaPoolId-edit"></p>
+            </div>
+            <div class="form-group row" id="floor-input-edit">
+              <label for="floor-edit">Số tầng: </label>
+              <input type="text" id="floor-edit" class="form-control" placeholder="Số tầng"
+                     aria-describedby="helpFloorId-edit">
+              <small id="helpFloorId-edit" class="text-muted">Số tầng phải lớn hơn 0</small>
+              <p class="w-100" id="errorFloor-edit"></p>
+            </div>
+            <div class="form-group row">
+              <label for="dichVuDiKem-edit">Dịch vụ miễn phí đi kèm: </label>
+              <input type="text" id="dichVuDiKem-edit" class="form-control"
+                     placeholder="Dịch vụ miễn phí đi kèm" aria-describedby="helpAttachId-edit">
+              <small id="helpAttachId-edit" class="text-muted">Không có ký tự đặc biệt</small>
+              <p class="w-100" id="errorAttach-edit"></p>
+            </div>
+            <div class="form-group row">
+              <label for="tienNghiKhac-edit">Mô tả tiện nghi khác: </label>
+              <textarea type="text" id="tienNghiKhac-edit" class="form-control"
+                        placeholder="Mô tả tiện nghi khác"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i> Close
+          </button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="serviceEdit"><i
+            class="fa fa-save"></i> Edit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

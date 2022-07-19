@@ -1,8 +1,9 @@
 var mybutton = document.getElementById("back-top");
-var navbar = document.getElementById("navbar");
+
 
 window.onscroll = function() {scrollFunction()};
-function scrollFunction() {
+async function scrollFunction() {
+  var navbar = await document.getElementById("navbar");
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         mybutton.style.display = "block";
         navbar.classList.add("bg-primary");
