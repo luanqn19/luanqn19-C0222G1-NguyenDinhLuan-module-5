@@ -1,1 +1,278 @@
-<p>customer works!</p>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover table-inverse" id="display-customer">
+      <thead class="thead-inverse">
+      <tr>
+        <th>Mã khách hàng</th>
+        <th>Họ tên</th>
+        <th>Ngày sinh</th>
+        <th>Giới tính</th>
+        <th>số CMND</th>
+        <th>Số điện thoại</th>
+        <th>Email</th>
+        <th>Địa chỉ</th>
+        <th>Loại khách</th>
+        <th>Thao tác</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let customer of listCustomer">
+        <td>{{customer.idCustomer}}</td>
+        <td>{{customer.fullName}}</td>
+        <td>{{customer.dayOfBirth}}</td>
+        <td>
+          <span *ngIf="customer.gender == true; then thenBlock else elseBlock"></span>
+          <ng-template #thenBlock>Nam</ng-template>
+          <ng-template #elseBlock>Nữ</ng-template>
+        </td>
+        <td>{{customer.document}}</td>
+        <td>{{customer.phone}}</td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.address}}</td>
+        <td>{{customer.nameTypeCustomer}}</td>
+        <td>
+          <button data-content="" type="button" class="btn btn-warning btn-sm btn-edt ml-1 mr-1"
+                  data-toggle="modal" data-target="#modalEdtId">
+            <i class="fa fa-pen"></i> Edit
+          </button>
+          <button data-content="" type="button" class="btn btn-danger btn-sm btn-del ml-1 mr-1"
+                  data-toggle="modal" data-target="#modalDelId">
+            <i class="fa fa-trash-can"></i> Delete
+          </button>
+          <button data-content="" type="button" class="btn btn-info btn-sm btn-detail ml-1 mr-1"
+                  data-toggle="modal" data-target="#modalDetailId">
+            <i class="fa fa-info"></i> Detail
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination align-content-center align-items-center mt-2 mb-2">
+    <a href="#">&laquo;</a>
+    <a href="#">1</a>
+    <a href="#" class="active">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">6</a>
+    <a href="#">&raquo;</a>
+  </div>
+</div>
+
+<button onclick="scrollTopAnimated()" id="back-top" title="Go to top"><i class="fa fa-arrow-up"></i></button>
+<button data-toggle="modal" data-target="#modalAddId" id="add-new" title="Add new customer"><i class="fa fa-plus"
+                                                                                               data-toggle="modal"
+                                                                                               data-target="#modalAddId"></i>
+</button>
+
+<!--Modal-->
+<!--Add new-->
+<div class="modal fade" id="modalAddId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="body-addnew">
+        <div class="container">
+          <div class="form-group row">
+            <label for="maKhachHang-add">Mã khách hàng: </label>
+            <input type="number" id="maKhachHang-add" class="form-control" readonly>
+          </div>
+          <div class="form-group row">
+            <label for="hoTen-add">Họ và tên: </label>
+            <input type="text" id="hoTen-add" class="form-control" placeholder="Họ và tên" aria-describedby="helpNameId">
+            <small id="helpNameId" class="text-muted">Không có ký tự đặc biệt hoặc số</small>
+            <p class="w-100" id="errorName"></p>
+          </div>
+          <div class="form-group row">
+            <label for="ngaySinh-add">Ngày sinh: </label>
+            <input type="date" id="ngaySinh-add" class="form-control" required>
+          </div>
+          <div class="form-group row">
+            <label for="gioiTinh-add">Giới tính: </label>
+            <select class="form-control" id="gioiTinh-add">
+              <option value="0">Nam</option>
+              <option value="1">Nữ</option>
+            </select>
+          </div>
+          <div class="form-group row">
+            <div class="col-6">
+              <label for="soCmnd-add">Số CMND/CCCD: </label>
+              <input id="soCmnd-add" class="form-control" type="text" aria-describedby="helpSoCmndId">
+              <small id="helpSoCmndId" class="text-muted">Không có ký tự đặc biệt</small>
+              <p class="w-100" id="errorCmnd"></p>
+            </div>
+            <div class="col-6">
+              <label for="soDienThoai-add">Số điện thoại: </label>
+              <input id="soDienThoai-add" class="form-control" type="text" aria-describedby="helpSdtId">
+              <small id="helpSdtId" class="text-muted">Định dạng +84|0(3|9)-xx.xx.xx.xx</small>
+              <p class="w-100" id="errorPhone"></p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-6">
+              <label for="email-add">Email: </label>
+              <input id="email-add" class="form-control" type="text" aria-describedby="helpEmailId">
+              <small id="helpEmailId" class="text-muted">Định dạng VD: abc123@domain.com</small>
+              <p class="w-100" id="errorEmail"></p>
+            </div>
+            <div class="col-6">
+              <label for="diaChi-add">Địa chỉ: </label>
+              <input id="diaChi-add" class="form-control" type="text" aria-describedby="helpDiaChiId">
+              <small id="helpDiaChiId" class="text-muted">Định dạng VD: 123 hoặc 123/12 Trần Độc</small>
+              <p class="w-100" id="errorAddr"></p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="type-add">Danh mục: </label>
+            <select name="type" class="form-control" id="type-add">
+              <option>-----Lựa chọn-----</option>
+              <option>Diamond</option>
+              <option>Platium</option>
+              <option>Gold</option>
+              <option>Silver</option>
+              <option>Member</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="customer-add-new"><i class="fa fa-save"></i> Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Edit-->
+<div class="modal fade" id="modalEdtId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="body-edit">
+        <div class="container">
+          <div class="form-group row">
+            <label for="maKhachHang-edit">Mã khách hàng: </label>
+            <input type="number" id="maKhachHang-edit" class="form-control" readonly>
+          </div>
+          <div class="form-group row">
+            <label for="hoTen-edit">Họ và tên: </label>
+            <input type="text" id="hoTen-edit" class="form-control" placeholder="Họ và tên" aria-describedby="helpNameId-edit">
+            <small id="helpNameId-edit" class="text-muted">Không có ký tự đặc biệt hoặc số</small>
+            <p class="w-100" id="errorName-edit"></p>
+          </div>
+          <div class="form-group row">
+            <label for="ngaySinh-edit">Ngày sinh: </label>
+            <input type="date" id="ngaySinh-edit" class="form-control" required>
+          </div>
+          <div class="form-group row">
+            <label for="gioiTinh-edit">Giới tính: </label>
+            <select class="form-control" id="gioiTinh-edit">
+              <option value="0">Nam</option>
+              <option value="1">Nữ</option>
+            </select>
+          </div>
+          <div class="form-group row">
+            <div class="col-6">
+              <label for="soCmnd-edit">Số CMND/CCCD: </label>
+              <input id="soCmnd-edit" class="form-control" type="text" aria-describedby="helpSoCmndId-edit">
+              <small id="helpSoCmndId-edit" class="text-muted">Không có ký tự đặc biệt</small>
+              <p class="w-100" id="errorCmnd-edit"></p>
+            </div>
+            <div class="col-6">
+              <label for="soDienThoai-edit">Số điện thoại: </label>
+              <input id="soDienThoai-edit" class="form-control" type="text" aria-describedby="helpSdtId-edit">
+              <small id="helpSdtId-edit" class="text-muted">Định dạng +84|0(3|9)-xx.xx.xx.xx</small>
+              <p class="w-100" id="errorPhone-edit"></p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-6">
+              <label for="email-edit">Email: </label>
+              <input id="email-edit" class="form-control" type="text" aria-describedby="helpEmailId-edit">
+              <small id="helpEmailId-edit" class="text-muted">Định dạng VD: abc123@domain.com</small>
+              <p class="w-100" id="errorEmail-edit"></p>
+            </div>
+            <div class="col-6">
+              <label for="diaChi-edit">Địa chỉ: </label>
+              <input id="diaChi-edit" class="form-control" type="text" aria-describedby="helpDiaChiId-edit">
+              <small id="helpDiaChiId-edit" class="text-muted">Định dạng VD: 123 hoặc 123/12 Trần Độc</small>
+              <p class="w-100" id="errorAddr-edit"></p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="type-edit">Danh mục: </label>
+            <select name="type" class="form-control" id="type-edit">
+              <option>-----Lựa chọn-----</option>
+              <option>Diamond</option>
+              <option>Platium</option>
+              <option>Gold</option>
+              <option>Silver</option>
+              <option>Member</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="customer-edit"><i class="fa fa-save"></i> Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal delete-->
+<div class="modal fade" id="modalDelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="body-delete">
+        <p class="text-danger">Bạn có muốn xoá thông tin khách hàng này? </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal detail-->
+<div class="modal fade" id="modalDetailId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detail Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="body-detail">
+        <p>Thông tin khách hàng chi tiết</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>

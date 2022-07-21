@@ -9,6 +9,5 @@ function displayField(obj) {
         document.getElementById('soLuongInput').classList.add("display-invisible");
         document.getElementById('loaiDichVuInput').classList.remove("display-visible");
         document.getElementById('loaiDichVuInput').classList.add("display-invisible");
-
     }
 }
