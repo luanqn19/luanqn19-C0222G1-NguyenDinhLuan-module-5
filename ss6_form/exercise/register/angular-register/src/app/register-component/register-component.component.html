@@ -1,0 +1,139 @@
+<h1 class="text-center">Đăng ký người dùng</h1>
+<div class="container" style="width: 500px;">
+  <form class="row justify-content-center bg-light"
+        autocomplete="off"
+        [formGroup]="userForm">
+
+    <div class="form-group mt-1 mb-1">
+      <label for="email" style="font-weight: bold">Email: </label>
+      <input formControlName="email" type="text" class="form-control" id="email" name="email">
+      <div class="text-danger"
+           *ngIf="userForm.controls.email.invalid
+        && (userForm.controls.email.touched || userForm.controls.email.dirty)">
+        <p *ngIf="userForm.controls.email.hasError('required')">
+          Please input email!
+        </p>
+      </div>
+      <div class="text-danger"
+           *ngIf="userForm.controls.email.invalid
+        && (userForm.controls.email.touched || userForm.controls.email.dirty)">
+        <p *ngIf="userForm.controls.email.hasError('email')">
+          Email invalid format: abc123@domain.com
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group mt-1 mb-1">
+      <label for="password" style="font-weight: bold">Password: </label>
+      <input formControlName="password" type="password" class="form-control" id="password" name="password">
+      <div class="text-danger"
+           *ngIf="userForm.controls.password.invalid
+        && (userForm.controls.password.touched || userForm.controls.password.dirty)">
+        <p *ngIf="userForm.controls.password.hasError('required')">
+          Please input password!
+        </p>
+      </div>
+      <div class="text-danger"
+           *ngIf="userForm.controls.password.invalid
+        && (userForm.controls.password.touched || userForm.controls.password.dirty)">
+        <p *ngIf="userForm.controls.password.hasError('minlength')">
+          Please input password has minimum 6 characters
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group mt-1 mb-1">
+      <label for="confirmPassword" style="font-weight: bold">Confirm Password: </label>
+      <input formControlName="confirmPassword" type="password" class="form-control" id="confirmPassword"
+             name="confirmPassword">
+      <div class="text-danger"
+           *ngIf="userForm.controls.confirmPassword.invalid
+        && (userForm.controls.confirmPassword.touched || userForm.controls.confirmPassword.dirty)">
+        <p *ngIf="userForm.controls.confirmPassword.hasError('required')">
+          Please input confirm password!
+        </p>
+      </div>
+      <div class="text-danger" *ngIf="userForm.controls.confirmPassword.value != ''">
+        <p *ngIf="userForm.hasError('notsame')">
+          Confirm password not same!
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group mt-1 mb-1">
+      <label for="country" style="font-weight: bold">Country: </label>
+      <select name="country" id="country" formControlName="country" class="form-control">
+        <option value="">----Lựa chọn----</option>
+        <option value="VietNam">Việt Nam</option>
+        <option value="Lao">Lào</option>
+        <option value="ThaiLand">Thái Lan</option>
+      </select>
+      <div class="text-danger"
+           *ngIf="userForm.controls.country.invalid
+        && (userForm.controls.country.touched || userForm.controls.country.dirty)">
+        <p *ngIf="userForm.controls.country.hasError('required')">
+          Please input your country!
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group mt-1 mb-1">
+      <label for="dayOfBirth" style="font-weight: bold">Day Of Birth: </label>
+      <input formControlName="dayOfBirth" type="date" class="form-control" id="dayOfBirth" name="dayOfBirth">
+      <div class="text-danger"
+           *ngIf="userForm.controls.dayOfBirth.invalid
+        && (userForm.controls.dayOfBirth.touched || userForm.controls.dayOfBirth.dirty)">
+        <p *ngIf="userForm.controls.dayOfBirth.hasError('required')">
+          Please choose your day of birth!
+        </p>
+      </div>
+      <div class="text-danger"
+           *ngIf="userForm.controls.dayOfBirth.invalid
+        && (userForm.controls.dayOfBirth.touched || userForm.controls.dayOfBirth.dirty)">
+        <p *ngIf="userForm.controls.dayOfBirth.hasError('not18')">
+          You not enough 18 year old!
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group mt-1 mb-1">
+      <label for="gender" style="font-weight: bold">Gender: </label>
+      <select name="gender" id="gender" formControlName="gender" class="form-control">
+        <option value="">----Lựa chọn----</option>
+        <option value="nam">Nam</option>
+        <option value="nu">Nữ</option>
+        <option value="khac">Khác</option>
+      </select>
+      <div class="text-danger"
+           *ngIf="userForm.controls.gender.invalid
+        && (userForm.controls.gender.touched || userForm.controls.gender.dirty)">
+        <p *ngIf="userForm.controls.gender.hasError('required')">
+          Please choose your gender!
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group mt-1 mb-1">
+      <label for="phone" style="font-weight: bold">Phone: </label>
+      <input formControlName="phone" type="text" class="form-control" id="phone" name="phone">
+      <div class="text-danger"
+           *ngIf="userForm.controls.phone.invalid
+        && (userForm.controls.phone.touched || userForm.controls.phone.dirty)">
+        <p *ngIf="userForm.controls.phone.hasError('required')">
+          Please input your phone!
+        </p>
+      </div>
+      <div class="text-danger"
+           *ngIf="userForm.controls.phone.invalid
+        && (userForm.controls.phone.touched || userForm.controls.phone.dirty)">
+        <p *ngIf="userForm.controls.phone.hasError('pattern')">
+          Phone invalid format: +84123456789
+        </p>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary mt-2 w-25" [disabled]="userForm.invalid" (click)="getInfo()">Save
+    </button>
+  </form>
+</div>
+

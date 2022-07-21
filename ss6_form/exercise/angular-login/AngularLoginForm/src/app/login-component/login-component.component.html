@@ -1,0 +1,49 @@
+<h1 class="text-center">Đăng Nhập</h1>
+<div class="container" style="width: 500px;">
+  <form class="row justify-content-center bg-light"
+        autocomplete="off"
+        [formGroup]="userForm">
+
+    <div class="form-group mt-1 mb-1">
+      <label for="email" style="font-weight: bold">Email: </label>
+      <input formControlName="email" type="text" class="form-control" id="email" name="email">
+      <div class="text-danger"
+           *ngIf="userForm.controls.email.invalid
+        && (userForm.controls.email.touched || userForm.controls.email.dirty)">
+        <p *ngIf="userForm.controls.email.hasError('required')">
+          Please input email!
+        </p>
+      </div>
+      <div class="text-danger"
+           *ngIf="userForm.controls.email.invalid
+        && (userForm.controls.email.touched || userForm.controls.email.dirty)">
+        <p *ngIf="userForm.controls.email.hasError('email')">
+          Email invalid format: abc123@domain.com
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group mt-1 mb-1">
+      <label for="password" style="font-weight: bold">Password: </label>
+      <input formControlName="password" type="password" class="form-control" id="password" name="password">
+      <div class="text-danger"
+           *ngIf="userForm.controls.password.invalid
+        && (userForm.controls.password.touched || userForm.controls.password.dirty)">
+        <p *ngIf="userForm.controls.password.hasError('required')">
+          Please input password!
+        </p>
+      </div>
+      <div class="text-danger"
+           *ngIf="userForm.controls.password.invalid
+        && (userForm.controls.password.touched || userForm.controls.password.dirty)">
+        <p *ngIf="userForm.controls.password.hasError('minlength')">
+          Please input password has minimum 6 characters
+        </p>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary mt-2 w-25" [disabled]="userForm.invalid">Sign In
+    </button>
+  </form>
+</div>
+
