@@ -52,7 +52,7 @@
     transition: .5s ease;
 }
 
-.container-image:hover > button {
+.container-image:hover > a {
     transition: .5s ease;
     visibility: visible;
 }

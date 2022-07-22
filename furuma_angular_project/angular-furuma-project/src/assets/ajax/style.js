@@ -32,3 +32,30 @@ function displayField(obj) {
     document.getElementById('loaiDichVuInput').classList.add("display-invisible");
   }
 }
+
+async function display(str) {
+  let val = await document.getElementById("loaiDichVu" + str).value;
+  console.log(val);
+  switch (val) {
+    case "1":
+      document.getElementById("standard-input" + str).classList.add("display-visible");
+      document.getElementById("pool-input" + str).classList.add("display-visible");
+      document.getElementById("floor-input" + str).classList.add("display-visible");
+      document.getElementById("standard-input" + str).classList.remove("display-invisible");
+      document.getElementById("pool-input" + str).classList.remove("display-invisible");
+      document.getElementById("floor-input" + str).classList.remove("display-invisible");
+      break;
+    case "2":
+      document.getElementById("standard-input" + str).classList.add("display-visible");
+      document.getElementById("pool-input" + str).classList.add("display-invisible");
+      document.getElementById("floor-input" + str).classList.add("display-visible");
+      document.getElementById("standard-input" + str).classList.remove("display-invisible");
+      document.getElementById("floor-input" + str).classList.remove("display-invisible");
+      break;
+    case "3":
+      document.getElementById("standard-input" + str).classList.add("display-invisible");
+      document.getElementById("pool-input" + str).classList.add("display-invisible");
+      document.getElementById("floor-input" + str).classList.add("display-invisible");
+      break;
+  }
+}

@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import {Facility} from "../model/facility";
+import {Injectable} from '@angular/core';
+import {Facility} from "./model/facility";
+import {FormGroup} from "@angular/forms";
 
-@Component({
-  selector: 'app-service',
-  templateUrl: './service.component.html',
-  styleUrls: ['./service.component.css']
+
+@Injectable({
+  providedIn: 'root'
 })
-export class ServiceComponent implements OnInit {
-  listService : Facility[] = [
+export class FacilityserviceService {
+  tempFacility:Facility | undefined;
+
+  listService: Facility[] = [
     {
       _idService: 1,
       _urlService: 'assets/image-page/services/img1.jpg',
@@ -64,12 +66,36 @@ export class ServiceComponent implements OnInit {
     }
   ];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
   }
 
-  addNewService () {
-
+  getAllFacilityService(): Facility[] {
+    return this.listService;
   }
+
+  addNewFacilityService(facilityForm: FormGroup): void {
+    let facility: Facility =
+      {
+        _idService: facilityForm.controls._idService.value,
+        _urlService: facilityForm.controls._urlService.value,
+        _titleService: facilityForm.controls._titleService.value,
+        _descriptionService: facilityForm.controls._descriptionService.value,
+        _area: facilityForm.controls._area.value,
+        _cost: facilityForm.controls._cost.value,
+        _maximum: facilityForm.controls._maximum.value,
+        _typeService: facilityForm.controls._typeService.value,
+        _typeBorrow: facilityForm.controls._typeBorrow.value,
+        _standardRoom: facilityForm.controls._standardRoom.value,
+        _areaPool: facilityForm.controls._areaPool.value,
+        _floor: facilityForm.controls._floor.value,
+        _attachFreeService: facilityForm.controls._attachFreeService.value
+      };
+
+    this.listService.push(facility);
+  }
+
+  // findById(id: number): Facility {
+    // this.tempFacility = this.listService.find(item => item._idService === id);
+    // return this.tempFacility;
+  // }
 }
