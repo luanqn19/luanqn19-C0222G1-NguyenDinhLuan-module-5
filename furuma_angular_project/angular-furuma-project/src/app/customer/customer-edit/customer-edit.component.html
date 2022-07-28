@@ -1,0 +1,158 @@
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Add Customer</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" id="body-edit">
+      <form autocomplete="off"
+            [formGroup]="customerForm">
+        <div class="container">
+          <div class="form-group row">
+            <label for="maKhachHang-edit">Mã khách hàng: </label>
+            <input type="number" id="maKhachHang-edit" class="form-control" formControlName="idCustomer">
+            <div class="text-danger"
+                 *ngIf="customerForm.controls.idCustomer.invalid
+                     && (customerForm.controls.idCustomer.touched || customerForm.controls.idCustomer.dirty)">
+              <p class="m-0" *ngIf="customerForm.controls.idCustomer.hasError('required')">
+                Please input ID of customer!
+              </p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="hoTen-edit">Họ và tên: </label>
+            <input type="text" id="hoTen-edit" class="form-control" placeholder="Họ và tên"
+                   aria-describedby="helpNameId" formControlName="fullName">
+            <small id="helpNameId" class="text-muted d-block w-100">Không có ký tự đặc biệt hoặc số</small>
+            <div class="text-danger"
+                 *ngIf="customerForm.controls.fullName.invalid
+                     && (customerForm.controls.fullName.touched || customerForm.controls.fullName.dirty)">
+              <p class="m-0" *ngIf="customerForm.controls.fullName.hasError('required')">
+                Please input Full name of customer!
+              </p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="ngaySinh-edit">Ngày sinh: </label>
+            <input type="date" id="ngaySinh-edit" class="form-control" formControlName="dayOfBirth">
+            <div class="text-danger"
+                 *ngIf="customerForm.controls.dayOfBirth.invalid
+                     && (customerForm.controls.dayOfBirth.touched || customerForm.controls.dayOfBirth.dirty)">
+              <p class="m-0" *ngIf="customerForm.controls.dayOfBirth.hasError('required')">
+                Please select day of birth of customer!
+              </p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="gioiTinh-edit">Giới tính: </label>
+            <select class="form-control" id="gioiTinh-edit" formControlName="gender">
+              <option value="">-----Lựa chọn-----</option>
+              <option value="1">Nam</option>
+              <option value="0">Nữ</option>
+            </select>
+            <div class="text-danger"
+                 *ngIf="customerForm.controls.gender.invalid
+                     && (customerForm.controls.gender.touched || customerForm.controls.gender.dirty)">
+              <p class="m-0" *ngIf="customerForm.controls.gender.hasError('required')">
+                Please select gender of customer!
+              </p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-6">
+              <label for="soCmnd-edit">Số CMND/CCCD: </label>
+              <input id="soCmnd-edit" class="form-control" formControlName="document"
+                     type="text" aria-describedby="helpSoCmndId">
+              <small id="helpSoCmndId" class="text-muted">Không có ký tự đặc biệt</small>
+              <div class="text-danger"
+                   *ngIf="customerForm.controls.document.invalid
+                     && (customerForm.controls.document.touched || customerForm.controls.document.dirty)">
+                <p class="m-0" *ngIf="customerForm.controls.document.hasError('required')">
+                  Please input document of customer!
+                </p>
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="soDienThoai-edit">Số điện thoại: </label>
+              <input id="soDienThoai-edit" class="form-control" formControlName="phone"
+                     type="text" aria-describedby="helpSdtId">
+              <small id="helpSdtId" class="text-muted">Định dạng +84|0(3|9)-xx.xx.xx.xx</small>
+              <div class="text-danger"
+                   *ngIf="customerForm.controls.phone.invalid
+                     && (customerForm.controls.phone.touched || customerForm.controls.phone.dirty)">
+                <p class="m-0" *ngIf="customerForm.controls.phone.hasError('required')">
+                  Please input phone number of customer!
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-6">
+              <label for="email-edit">Email: </label>
+              <input id="email-edit" class="form-control" formControlName="email"
+                     type="text" aria-describedby="helpEmailId">
+              <small id="helpEmailId" class="text-muted">Định dạng VD: abc123@domain.com</small>
+              <div class="text-danger"
+                   *ngIf="customerForm.controls.email.invalid
+                     && (customerForm.controls.email.touched || customerForm.controls.email.dirty)">
+                <p class="m-0" *ngIf="customerForm.controls.email.hasError('required')">
+                  Please input email of customer!
+                </p>
+              </div>
+              <div class="text-danger"
+                   *ngIf="customerForm.controls.email.invalid
+                     && (customerForm.controls.email.touched || customerForm.controls.email.dirty)">
+                <p class="m-0" *ngIf="customerForm.controls.email.hasError('email')">
+                  Email invalid. Example format: abc123@domain.com
+                </p>
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="diaChi-edit">Địa chỉ: </label>
+              <input id="diaChi-edit" class="form-control" formControlName="address"
+                     type="text" aria-describedby="helpDiaChiId">
+              <small id="helpDiaChiId" class="text-muted">Định dạng VD: 123 hoặc 123/12 Trần Độc</small>
+              <div class="text-danger"
+                   *ngIf="customerForm.controls.address.invalid
+                     && (customerForm.controls.address.touched || customerForm.controls.address.dirty)">
+                <p class="m-0" *ngIf="customerForm.controls.address.hasError('required')">
+                  Please input address of customer!
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="type-edit">Danh mục: </label>
+            <select name="type" class="form-control" id="type-edit" formControlName="nameTypeCustomer">
+              <option value="">-----Lựa chọn-----</option>
+              <option value="Diamond">Diamond</option>
+              <option value="Platium">Platium</option>
+              <option value="Gold">Gold</option>
+              <option value="Silver">Silver</option>
+              <option value="Member">Member</option>
+            </select>
+            <div class="text-danger"
+                 *ngIf="customerForm.controls.nameTypeCustomer.invalid
+                     && (customerForm.controls.nameTypeCustomer.touched || customerForm.controls.nameTypeCustomer.dirty)">
+              <p class="m-0" *ngIf="customerForm.controls.nameTypeCustomer.hasError('required')">
+                Please choose name type of customer!
+              </p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+      <button type="button" class="btn btn-primary"
+              [disabled]="customerForm.invalid"
+              (click)="onSubmit()"
+              data-dismiss="modal"
+              id="customer-edit-new">
+        <i class="fa fa-save"></i> Add
+      </button>
+    </div>
+  </div>
+</div>

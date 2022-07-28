@@ -10,24 +10,32 @@ import {FooterMenuDashboardComponent} from './footer-menu-dashboard/footer-menu-
 import {FacilityserviceService} from "./facilityservice.service";
 import {CustomerserviceService} from "./customerservice.service";
 import {ContractserviceService} from "./contractservice.service";
-import { FacilityEditComponent } from './facility/facility-edit/facility-edit.component';
-import { FacilityDeleteComponent } from './facility/facility-delete/facility-delete.component';
+import {ContractDetailService} from "./contract-detail.service";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ToastNoAnimationModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     NavMenuDashboardComponent,
     FooterMenuDashboardComponent,
-    RoutingComponent,
+    RoutingComponent
   ],
   imports: [
     RouterModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    ToastNoAnimationModule.forRoot()
   ],
   providers: [FacilityserviceService,
-              CustomerserviceService,
-              ContractserviceService],
+    CustomerserviceService,
+    ContractserviceService, ContractDetailService,
+    HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule {

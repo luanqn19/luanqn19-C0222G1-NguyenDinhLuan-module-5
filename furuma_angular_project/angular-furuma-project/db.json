@@ -1,0 +1,116 @@
+{
+  "listService": [
+    {
+      "id": 1,
+      "_urlService": "assets/image-page/services/img1.jpg",
+      "_titleService": "PHÒNG SUITE HƯỚNG BIỂN",
+      "_descriptionService": "Diện tích phòng: 85.8m"
+    },
+    {
+      "id": 3,
+      "_urlService": "assets/image-page/services/img3.jpg",
+      "_titleService": "PHÒNG DELUXE HƯỚNG VƯỜN",
+      "_descriptionService": "Diện tích phòng: 43.7m"
+    },
+    {
+      "id": 4,
+      "_urlService": "assets/image-page/services/img4.jpg",
+      "_titleService": "PHÒNG SUITE HƯỚNG BIỂN",
+      "_descriptionService": "Diện tích phòng: 85.8m"
+    },
+    {
+      "id": 5,
+      "_urlService": "assets/image-page/services/img5.jpg",
+      "_titleService": "PHÒNG SUPERIOR HƯỚNG VƯỜN",
+      "_descriptionService": "Diện tích phòng: 40.1m"
+    },
+    {
+      "id": 6,
+      "_urlService": "assets/image-page/services/img6.jpg",
+      "_titleService": "PHÒNG DELUXE HƯỚNG VƯỜN",
+      "_descriptionService": "Diện tích phòng: 43.7m"
+    },
+    {
+      "id": 7,
+      "_urlService": "assets/image-page/services/img7.jpg",
+      "_titleService": "PHÒNG SUITE HƯỚNG BIỂN",
+      "_descriptionService": "Diện tích phòng: 85.8m"
+    },
+    {
+      "id": 8,
+      "_urlService": "assets/image-page/services/img8.jpg",
+      "_titleService": "PHÒNG SUPERIOR HƯỚNG VƯỜN",
+      "_descriptionService": "Diện tích phòng: 40.1m"
+    },
+    {
+      "id": 9,
+      "_urlService": "assets/image-page/services/img9.jpg",
+      "_titleService": "PHÒNG DELUXE HƯỚNG VƯỜN",
+      "_descriptionService": "Diện tích phòng: 43.7m"
+    },
+    {
+      "_idService": 121,
+      "_urlService": "assets/image-page/services/img1.jpg",
+      "_titleService": "abcxyz",
+      "_descriptionService": "Đầy đủ tiện nghi",
+      "_area": 30,
+      "_cost": 1000,
+      "_maximum": 2,
+      "_typeService": "1",
+      "_typeBorrow": "day",
+      "_standardRoom": "VIP",
+      "_areaPool": 20,
+      "_floor": 2,
+      "_attachFreeService": "Không",
+      "id": 10
+    },
+    {
+      "_idService": 131,
+      "_urlService": "assets/image-page/services/img3.jpg",
+      "_titleService": "phòng mới",
+      "_descriptionService": "Không",
+      "_area": 20,
+      "_cost": 100,
+      "_maximum": 2,
+      "_typeService": "2",
+      "_typeBorrow": "day",
+      "_standardRoom": "VIP",
+      "_areaPool": 0,
+      "_floor": 2,
+      "_attachFreeService": "Không",
+      "id": 11
+    },
+    {
+      "_idService": 141,
+      "_urlService": "assets/image-page/services/img4.jpg",
+      "_titleService": "Phòng Villa",
+      "_descriptionService": "Đầy đủ tiện nghi",
+      "_area": 20,
+      "_cost": 30,
+      "_maximum": 3,
+      "_typeService": "2",
+      "_typeBorrow": "day",
+      "_standardRoom": "VIP",
+      "_areaPool": 0,
+      "_floor": 2,
+      "_attachFreeService": "Không",
+      "id": 12
+    },
+    {
+      "_idService": 151,
+      "_urlService": "assets/image-page/services/img5.jpg",
+      "_titleService": "Phòng Rom",
+      "_descriptionService": "Đầy đủ tiện nghi",
+      "_area": 20,
+      "_cost": 1000,
+      "_maximum": 3,
+      "_typeService": "3",
+      "_typeBorrow": "day",
+      "_standardRoom": "",
+      "_areaPool": 0,
+      "_floor": 0,
+      "_attachFreeService": "Không",
+      "id": 13
+    }
+  ]
+}

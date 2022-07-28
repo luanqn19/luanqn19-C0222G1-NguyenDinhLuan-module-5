@@ -2,7 +2,7 @@ export interface Customer {
   idCustomer ?: number;
   fullName ?: string;
   dayOfBirth ?: string;
-  gender ?: boolean;
+  gender ?: number;
   document ?: string;
   phone ?: string;
   email ?: string;
