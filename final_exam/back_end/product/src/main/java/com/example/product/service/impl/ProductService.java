@@ -1,0 +1,64 @@
+package com.example.product.service.impl;
+
+import com.example.product.model.Product;
+import com.example.product.repository.ProductRepository;
+import com.example.product.service.IProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class ProductService implements IProductService {
+    @Autowired
+    private ProductRepository productRepository;
+
+
+    @Override
+    public List<Product> findAll () {
+        return productRepository.findAll();
+    }
+
+    @Override
+    public Page<Product> findAllPage (Pageable pageable) {
+        return productRepository.findAll(pageable);
+    }
+
+    @Override
+    public void save (Product product) {
+        productRepository.save(product);
+    }
+
+    @Override
+    public Optional<Product> find (Integer id) {
+        return productRepository.findById(id);
+    }
+
+    @Override
+    public void delete (Product product) {
+        productRepository.delete(product);
+    }
+
+    @Override
+    public void edit (Product product) {
+        productRepository.save(product);
+    }
+
+    @Override
+    public List<Product> searchFrom (String from) {
+        return productRepository.searchFrom(from);
+    }
+
+    @Override
+    public List<Product> searchTo (String to) {
+        return productRepository.searchTo(to);
+    }
+
+    @Override
+    public List<Product> searchMixture () {
+        return null;
+    }
+}

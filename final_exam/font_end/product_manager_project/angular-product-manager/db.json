@@ -1,0 +1,31 @@
+{
+  "products": [
+    {
+      "idProduct": 1,
+      "price": 24500,
+      "fromPlace": "Da Nang",
+      "toPlace": "Quy Nhon",
+      "amount": 0,
+      "dateStart": "2022-07-28",
+      "timeStart": "20:00",
+      "catalog": {
+        "id": 2,
+        "name": "Phuong Trang"
+      }
+    }
+  ],
+  "catalogs": [
+    {
+      "id": 1,
+      "name": "Trung Tin"
+    },
+    {
+      "id": 2,
+      "name": "Phuong Trang"
+    },
+    {
+      "id": 3,
+      "name": "Thuan Thao"
+    }
+  ]
+}
