@@ -9,7 +9,7 @@ import {tap} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductService {
-  private URL_PRODUCT_API = 'http://localhost:3000/products';
+  // private URL_PRODUCT_API = 'http://localhost:3000/products';
   private URL_PRODUCT_API_BACKEND = 'http://localhost:8080/product-api';
   private formProduct: FormGroup = new FormGroup(
     {
@@ -63,21 +63,30 @@ export class ProductService {
     return this.httpClient.get<Product>(this.URL_PRODUCT_API_BACKEND + '/products-list/' + id);
   }
 
-  searchFrom(s: string): Observable<Product[]> {
-    if (s) {
+  searchFrom(fromPlace: string, toPlace: string, date1: string, date2: string): Observable<Product[]> {
+    console.log('fromPlace:' + fromPlace);
+    console.log('toPlace:' + toPlace);
+    console.log('date1:' + date1);
+    console.log('date2:' + date2);
+    if (fromPlace !== null && toPlace !== null && date1 !== null && date2 !== null) {
       return this.httpClient
-        .get<Product[]>(this.URL_PRODUCT_API_BACKEND + '/products-list/from/' + s);
+        // tslint:disable-next-line:max-line-length
+        .get<Product[]>(this.URL_PRODUCT_API_BACKEND + `/search?fromPlace=${fromPlace.trim()}` + `&toPlace=${toPlace.trim()}` + `&dateS=${date1.trim()}` + `&dateE=${date2.trim()}`);
+    } else if (fromPlace !== null && toPlace !== null && date1 === null && date2 === null) {
+      return this.httpClient
+        // tslint:disable-next-line:max-line-length
+        .get<Product[]>(this.URL_PRODUCT_API_BACKEND + `/search-from-and-to?fromPlace=${fromPlace.trim()}` + `&toPlace=${toPlace.trim()}`);
+    } else if (fromPlace !== null || toPlace !== null && date1 === null && date2 === null) {
+      if (fromPlace !== null) {
+        return this.httpClient
+          .get<Product[]>(this.URL_PRODUCT_API_BACKEND + `/search-from?fromPlace=${fromPlace.trim()}`);
+      } else if (toPlace !== null) {
+        return this.httpClient
+          .get<Product[]>(this.URL_PRODUCT_API_BACKEND + `/search-to?toPlace=${toPlace.trim()}`);
+      }
     } else {
       return this.httpClient.get<Product[]>(this.URL_PRODUCT_API_BACKEND);
     }
-
-    // if (s) {
-    //   return this.httpClient
-    //     .get<Product[]>(this.URL_PRODUCT_API + `/?from_like=${s.trim()}`)
-    //     .pipe(tap((_) => console.log(`Searching for: ${s}`)));
-    // } else {
-    //   return this.httpClient.get<Product[]>(this.URL_PRODUCT_API);
-    // }
   }
 
   searchTo(s: string): Observable<Product[]> {
@@ -85,7 +94,7 @@ export class ProductService {
       return this.httpClient
         .get<Product[]>(this.URL_PRODUCT_API_BACKEND + '/products-list/to/' + s);
     } else {
-      return this.httpClient.get<Product[]>(this.URL_PRODUCT_API_BACKEND);
+      return this.httpClient.get<Product[]>(this.URL_PRODUCT_API_BACKEND + '/products-list');
     }
   }
 

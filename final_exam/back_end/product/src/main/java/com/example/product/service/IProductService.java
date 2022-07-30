@@ -20,9 +20,11 @@ public interface IProductService {
 
     void edit (Product product);
 
-    List<Product> searchFrom (String from);
+    List<Product> searchMixture (String from, String to, String date1, String date2);
 
-    List<Product> searchTo (String to);
+    List<Product> searchMixtureFromAndTo (String from, String to);
 
-    List<Product> searchMixture ();
+    List<Product> searchFrom (String fromPlace);
+
+    List<Product> searchTo (String toPlace);
 }

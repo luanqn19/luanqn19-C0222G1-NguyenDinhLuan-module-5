@@ -1,18 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-2">
-      <a type="button" class="btn btn-primary btn-sm mt-2 mb-2" data-toggle="modal"
-         data-target="#modelAddId"> Add new
-      </a>
+    <div class="form-group row">
+      <input [formControl]="fromSearch" type="text" id="from" class="form-control mt-2 mb-2 col-4 ml-2 mr-2" placeholder="From">
+      <input [formControl]="toSearch" type="text" id="to" class="form-control mt-2 mb-2 col-4  ml-2 mr-2" placeholder="To">
     </div>
-    <div class="col-10">
-      <div class="form-group row">
-        <input #elementFrom type="text" id="from" class="form-control mt-2 mb-2 col-4 ml-2 mr-2" (keydown.enter)="searchFrom(elementFrom.value)"
-               placeholder="From">
-        <input #elementTo type="text" id="to" class="form-control mt-2 mb-2 col-4  ml-2 mr-2" (keydown.enter)="searchTo(elementTo.value)"
-               placeholder="To">
-      </div>
-
+    <div class="form-group row">
+      <input [formControl]="dateSearch1" type="date" id="date1" class="form-control mt-2 mb-2 col-4 ml-2 mr-2" value=" ">
+      <input [formControl]="dateSearch2" type="date" id="date2" class="form-control mt-2 mb-2 col-4  ml-2 mr-2" value=" ">
+    </div>
+    <div class="form-group row">
+      <button class="btn btn-primary mb-2 mr-2 mt-2" (click)="searchAll()">Mixture</button>
+      <button class="btn btn-primary mb-2 mr-2 mt-2" data-toggle="modal" data-target="#modelAddId"><i class="fa fa-plus"></i> Add New</button>
     </div>
   </div>
   <div class="table-responsive table-hover table-inverse">

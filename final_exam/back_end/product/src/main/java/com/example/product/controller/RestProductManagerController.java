@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,16 +48,16 @@ public class RestProductManagerController {
     @GetMapping(value = "/products-list/{id}")
     public ResponseEntity<Product> findById (@PathVariable("id") Integer id) {
         Optional<Product> product = productService.find(id);
-        if (!product.isPresent()){
+        if (! product.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(product.get(), HttpStatus.OK);
+        return new ResponseEntity<>(product.get() , HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/products-list/{id}")
     public ResponseEntity<Product> delete (@PathVariable("id") Integer id) {
         Optional<Product> product = productService.find(id);
-        if (!product.isPresent()){
+        if (! product.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         productService.delete(product.get());
@@ -66,16 +67,28 @@ public class RestProductManagerController {
     @PatchMapping(value = "/edit-product")
     public ResponseEntity<Product> edit (@RequestBody Product product) {
         productService.edit(product);
-        return new ResponseEntity<>(product, HttpStatus.CREATED);
+        return new ResponseEntity<>(product , HttpStatus.CREATED);
     }
 
-    @GetMapping(value = "/products-list/from/{from}")
-    public ResponseEntity<List<Product>> searchFrom (@PathVariable("from") String from) {
-        return new ResponseEntity<>(productService.searchFrom(from) , HttpStatus.OK);
+    @GetMapping(value = "/search")
+    public ResponseEntity<List<Product>> searchMixture (@RequestParam(defaultValue = " ") String fromPlace ,
+                                                        @RequestParam(defaultValue = " ") String toPlace ,
+                                                        @RequestParam(defaultValue = " ") String dateS ,
+                                                        @RequestParam(defaultValue = " ") String dateE) {
+        return new ResponseEntity<>(productService.searchMixture(fromPlace , toPlace , dateS , dateE) , HttpStatus.OK);
     }
 
-    @GetMapping(value = "/products-list/to/{to}")
-    public ResponseEntity<List<Product>> searchTo (@PathVariable("to") String to) {
-        return new ResponseEntity<>(productService.searchTo(to) , HttpStatus.OK);
+    @GetMapping(value = "/search-from-and-to")
+    public ResponseEntity<List<Product>> searchMixtureFromAndTo (@RequestParam String fromPlace ,
+                                                        @RequestParam String toPlace ){
+        return new ResponseEntity<>(productService.searchMixtureFromAndTo(fromPlace , toPlace) , HttpStatus.OK);
+    }
+    @GetMapping(value = "/search-from")
+    public ResponseEntity<List<Product>> searchFrom (@RequestParam String fromPlace){
+        return new ResponseEntity<>(productService.searchFrom(fromPlace) , HttpStatus.OK);
+    }
+    @GetMapping(value = "/search-to")
+    public ResponseEntity<List<Product>> searchTo (@RequestParam String toPlace ){
+        return new ResponseEntity<>(productService.searchTo(toPlace) , HttpStatus.OK);
     }
 }

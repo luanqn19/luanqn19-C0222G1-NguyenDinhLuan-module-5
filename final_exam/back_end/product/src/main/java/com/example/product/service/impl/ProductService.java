@@ -16,7 +16,6 @@ public class ProductService implements IProductService {
     @Autowired
     private ProductRepository productRepository;
 
-
     @Override
     public List<Product> findAll () {
         return productRepository.findAll();
@@ -48,17 +47,22 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> searchFrom (String from) {
-        return productRepository.searchFrom(from);
+    public List<Product> searchMixture (String from, String to, String date1, String date2) {
+        return productRepository.searchMixture(from, to, date1, date2);
     }
 
     @Override
-    public List<Product> searchTo (String to) {
-        return productRepository.searchTo(to);
+    public List<Product> searchMixtureFromAndTo (String from , String to) {
+        return productRepository.searchMixture(from, to);
     }
 
     @Override
-    public List<Product> searchMixture () {
-        return null;
+    public List<Product> searchFrom (String fromPlace) {
+        return productRepository.searchMixtureFrom(fromPlace);
+    }
+
+    @Override
+    public List<Product> searchTo (String toPlace) {
+        return productRepository.searchMixtureTo(toPlace);
     }
 }

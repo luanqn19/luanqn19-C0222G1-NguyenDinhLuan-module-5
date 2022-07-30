@@ -14,7 +14,17 @@ import {ToastrService} from 'ngx-toastr';
 export class ProductEditComponent implements OnInit {
   catalogs: Catalog[];
 
-  formProduct: FormGroup;
+  formProduct: FormGroup = new FormGroup({
+    idProduct: new FormControl(),
+    fromPlace: new FormControl(Validators.required),
+    toPlace: new FormControl(Validators.required),
+    dateStart: new FormControl(Validators.required),
+    price: new FormControl([Validators.required, Validators.min(0)]),
+    amount: new FormControl([Validators.required, Validators.min(0)]),
+    timeStart: new FormControl(Validators.required),
+    catalog: new FormControl(Validators.required),
+  });
+
   idEdit: number;
 
   constructor(private productService: ProductService,
@@ -29,40 +39,29 @@ export class ProductEditComponent implements OnInit {
       this.catalogs = value;
     });
     this.activatedRoute.url.subscribe(value => {
-      this.idEdit = Number(value[1].path);
-    });
-    this.productService.find(this.idEdit).subscribe(value => {
-      this.formProduct = new FormGroup({
-        idProduct: new FormControl(),
-        fromPlace: new FormControl(Validators.required),
-        toPlace: new FormControl(Validators.required),
-        dateStart: new FormControl(Validators.required),
-        price: new FormControl([Validators.required, Validators.min(0)]),
-        amount: new FormControl([Validators.required, Validators.min(0)]),
-        timeStart: new FormControl(Validators.required),
-        catalog: new FormGroup({
-          idCatalog: new FormControl(Validators.required)
-        }),
+      this.productService.find(Number(value[1].path)).subscribe(obj => {
+        console.log(obj);
+        this.formProduct.patchValue(obj);
       });
-      this.formProduct.patchValue(value);
     });
   }
+
   showSuccess() {
     this.toastr.success('Edit data successfully!', 'Edit Product');
   }
 
   editProduct() {
     const product = this.formProduct.value;
-    this.catalogs.forEach(items => {
-      if (items.idCatalog === Number(product.catalog.id)) {
-        product.catalog = items;
-      }
-    });
     this.productService.edit(product).subscribe(() => {
       this.showSuccess();
     });
     setTimeout(() => {
       this.router.navigateByUrl('/list');
     }, 1000);
+  }
+
+  compareByObjectId(itemOne, itemTwo) {
+    // tslint:disable-next-line:triple-equals
+    return itemOne && itemTwo && itemOne.id == itemTwo.id;
   }
 }

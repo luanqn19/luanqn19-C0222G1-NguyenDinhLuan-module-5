@@ -111,16 +111,16 @@
               </p>
             </div>
           </div>
-          <div class="form-group row" formGroupName="catalog">
+          <div class="form-group row">
             <label for="catalog-edit">Catalog: </label>
-            <select name="catalog" formControlName="idCatalog" class="form-control" id="catalog-edit">
+            <select name="catalog" formControlName="catalog" [compareWith]="compareByObjectId" class="form-control" id="catalog-edit">
               <option value="">-----Lựa chọn-----</option>
-              <option *ngFor="let catalog of catalogs" value="{{catalog.idCatalog}}">{{catalog.nameCatalog}}</option>
+              <option *ngFor="let catalog of catalogs" [ngValue]="catalog">{{catalog.nameCatalog}}</option>
             </select>
             <div class="text-danger"
-                 *ngIf="formProduct.controls.idCatalog.invalid
-                     && (formProduct.controls.idCatalog.touched || formProduct.controls.idCatalog.dirty)">
-              <p class="m-0" *ngIf="formProduct.controls.idCatalog.hasError('required')">
+                 *ngIf="formProduct.controls.catalog.invalid
+                     && (formProduct.controls.catalog.touched || formProduct.controls.catalog.dirty)">
+              <p class="m-0" *ngIf="formProduct.controls.catalog.hasError('required')">
                 Please choose catalog of product!
               </p>
             </div>

@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../model/product';
 import {ProductService} from '../service/product.service';
-import {FormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {Catalog} from '../model/catalog';
 import {CatalogService} from '../service/catalog.service';
 import {ToastrService} from 'ngx-toastr';
@@ -17,6 +17,11 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   catalogs: Catalog[];
   formProduct: FormGroup;
+
+  fromSearch: FormControl = new FormControl();
+  toSearch: FormControl = new FormControl();
+  dateSearch1: FormControl = new FormControl();
+  dateSearch2: FormControl = new FormControl();
 
   constructor(private productService: ProductService,
               private catalogService: CatalogService,
@@ -52,19 +57,13 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  searchFrom(s: string) {
-    console.log(s);
-    this.productService.searchFrom(s).subscribe(value => {
-      if (value.length === 0) {
-        this.notFoundSearch();
-      } else {
-        this.products = value;
-      }
-    });
-  }
-  searchTo(s: string) {
-    console.log(s);
-    this.productService.searchTo(s).subscribe(value => {
+  searchAll() {
+    console.log('fromSearch: ' + this.fromSearch.value);
+    console.log('toSearch: ' + this.toSearch.value);
+    console.log('dateSearch1: ' + this.dateSearch1.value);
+    console.log('dateSearch2: ' + this.dateSearch2.value);
+    // tslint:disable-next-line:max-line-length
+    this.productService.searchFrom(this.fromSearch.value, this.toSearch.value, this.dateSearch1.value, this.dateSearch2.value).subscribe(value => {
       if (value.length === 0) {
         this.notFoundSearch();
       } else {
